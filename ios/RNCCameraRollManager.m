@@ -366,6 +366,15 @@ RCT_EXPORT_METHOD(getPhotos:(NSDictionary *)params
                                                 : (asset.mediaType == PHAssetMediaTypeAudio
                                                   ? @"audio"
                                                   : @"unknown")));
+      NSString *const extension = [asset valueForKey:@"uniformTypeIdentifier"];
+
+        if(extension.length>0){
+          NSArray const *extensionArr = [extension componentsSeparatedByString:@"."];
+          if(extensionArr && extensionArr.count>1){
+            assetMediaTypeLabel = [assetMediaTypeLabel stringByAppendingString: @"/"];
+            assetMediaTypeLabel = [assetMediaTypeLabel stringByAppendingString:extensionArr[1]];
+          }
+        }
       CLLocation *const loc = asset.location;
 
       [assets addObject:@{
