@@ -11,7 +11,7 @@
 import {Platform} from 'react-native';
 import RNCCameraRoll from './nativeInterface';
 
-const invariant = require('fbjs/lib/invariant');
+const invariant = require('invariant');
 
 const GROUP_TYPES_OPTIONS = {
   Album: 'Album',
@@ -122,7 +122,9 @@ export type PhotoIdentifiersPage = {
     start_cursor?: string,
     end_cursor?: string,
   },
+  limited?: boolean,
 };
+
 export type SaveToCameraRollOptions = {
   type?: 'photo' | 'video' | 'auto',
   album?: string,
